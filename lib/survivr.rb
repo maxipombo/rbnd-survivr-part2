@@ -2,6 +2,7 @@ require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
 require_relative "jury"
+require 'colorizr'
 
 #After your tests pass, uncomment this code below
 #=========================================================
@@ -23,21 +24,21 @@ require_relative "jury"
 def phase_one
   8.times do |round|
     loosers = @borneo.individual_immunity_challenge
-    puts "For round #{round + 1}: #{loosers} was eliminated off the island"
+    puts "For round #{round + 1}: " + "#{loosers} ".red + "was eliminated off the island"
   end
 end
 
 def phase_two
   3.times do |round|
     loosers = @borneo.individual_immunity_challenge
-    puts "#{loosers.name} was eliminated off the island"
+    puts "For round #{round + 1}: " + "#{loosers.name} ".red + "was eliminated off the island"
   end
 end
 
 def phase_three
   7.times do |round|
     loosers = @borneo.individual_immunity_challenge
-    puts "#{loosers.name} was eliminated off the island"
+    puts "For round #{round + 1}: " + "#{loosers.name} ".red + "was eliminated off the island"
     @jury.add_member(loosers)
   end
 end
@@ -45,12 +46,24 @@ end
 
 # If all the tests pass, the code below should run the entire simulation!!
 #=========================================================
+puts "*** Phase one ***".blue
 phase_one #8 eliminations
+
 @merge_tribe = @borneo.merge("Cello") # After 8 eliminations, merge the two tribes together
+
+puts "*** Phase two ***".blue
 phase_two #3 more eliminations
 @jury = Jury.new
+
+puts "*** Phase three ***".blue
 phase_three #7 elminiations become jury members
 finalists = @merge_tribe.members #set finalists
+
+puts "*** Jury members report votes ***".blue
 vote_results = @jury.cast_votes(finalists) #Jury members report votes
+
+puts "*** Jury announces their votes ***".blue
 @jury.report_votes(vote_results) #Jury announces their votes
+
+puts "*** Jury announces final winner ***".blue
 @jury.announce_winner(vote_results) #Jury announces final winner
