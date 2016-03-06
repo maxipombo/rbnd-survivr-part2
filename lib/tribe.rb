@@ -8,5 +8,10 @@ class Tribe
     # Puts tribe creation
     puts "Tribe #{@name} has been created"
   end
-  
+
+  # Tribe to string
+  def to_s
+    @name
+  end
+
 end
