@@ -11,14 +11,14 @@ class Jury
 
   def cast_votes(finalists)
 
-    # cast votes returns hash
+    # Cast votes returns hash
     votes = {}
 
     finalists.each do |finalist|
       votes[finalist] = 0
     end
 
-    # every vote puts to terminal
+    # Every vote puts to terminal
     @members.each do |member|
       vote = finalists.sample
       votes[vote] += 1
@@ -35,4 +35,10 @@ class Jury
     end
   end
 
+  # Announce winner
+  def announce_winner(votes)
+    winner = votes.max_by { |finalist, total_votes| total_votes }[0]
+    puts "#{winner} has won Survivr!"
+    winner
+  end
 end
