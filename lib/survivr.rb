@@ -22,13 +22,17 @@ require 'colorizr'
 #This is where you will write your code for the three phases
 
 def phase_one
+  puts "*** Phase one ***".blue
+  council_elimination = []
   8.times do |round|
-    loosers = @borneo.individual_immunity_challenge
-    puts "For round #{round + 1}: " + "#{loosers} ".red + "was eliminated off the island"
+    loosers = @borneo.immunity_challenge
+    council_elimination << loosers.tribal_council
   end
+  return council_elimination.length
 end
 
 def phase_two
+  puts "*** Phase two ***".blue
   3.times do |round|
     loosers = @borneo.individual_immunity_challenge
     puts "For round #{round + 1}: " + "#{loosers.name} ".red + "was eliminated off the island"
@@ -36,6 +40,7 @@ def phase_two
 end
 
 def phase_three
+  puts "*** Phase three ***".blue
   7.times do |round|
     loosers = @borneo.individual_immunity_challenge
     puts "For round #{round + 1}: " + "#{loosers.name} ".red + "was eliminated off the island"
@@ -46,16 +51,10 @@ end
 
 # If all the tests pass, the code below should run the entire simulation!!
 #=========================================================
-puts "*** Phase one ***".blue
 phase_one #8 eliminations
-
 @merge_tribe = @borneo.merge("Cello") # After 8 eliminations, merge the two tribes together
-
-puts "*** Phase two ***".blue
 phase_two #3 more eliminations
 @jury = Jury.new
-
-puts "*** Phase three ***".blue
 phase_three #7 elminiations become jury members
 finalists = @merge_tribe.members #set finalists
 

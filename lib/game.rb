@@ -34,7 +34,11 @@ class Game
 
   # Individual immunity challenge
   def individual_immunity_challenge
-    @tribes.sample.members.sample
+    individuals = []
+    @tribes.each do |tribe|
+      individuals = individuals + tribe.members
+    end
+    individuals.sample
   end
 
 end
