@@ -14,7 +14,7 @@ class Tribe
     @name
   end
 
-  # Tribal council immune is not voted off
+  # Tribal council immune is not voted off and returns who was voted off
   def tribal_council(options={})
     immune = options[:immune]
     voted_off = @members.sample
