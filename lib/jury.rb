@@ -27,4 +27,12 @@ class Jury
 
     votes
   end
+
+  # Report votes puts score for each finalist
+  def report_votes(votes)
+    votes.each do |finalist, total_votes|
+      puts "#{finalist} received #{total_votes}"
+    end
+  end
+
 end
