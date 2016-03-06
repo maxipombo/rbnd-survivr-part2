@@ -15,4 +15,9 @@ class Game
     @tribes.sample
   end
 
+  # Method clear tribes
+  def clear_tribes
+    @tribes.clear
+  end
+
 end
