@@ -9,4 +9,10 @@ class Game
   def add_tribe(tribe)
     @tribes << tribe
   end
+
+  # Method immunity challenge
+  def immunity_challenge
+    @tribes.sample
+  end
+
 end
