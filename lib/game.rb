@@ -20,4 +20,21 @@ class Game
     @tribes.clear
   end
 
+  # Merge returns new tribe
+  def merge(new_tribe)
+    new_tribe = Tribe.new(name: new_tribe, members: merge_members)
+    clear_tribes
+    @tribes << new_tribe
+    new_tribe
+  end
+
+  def merge_members
+    @tribes.map(&:members).flatten
+  end
+
+  # Individual immunity challenge
+  def individual_immunity_challenge
+    @tribes.sample.members.sample
+  end
+
 end
