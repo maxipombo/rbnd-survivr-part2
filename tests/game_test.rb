@@ -17,9 +17,9 @@ class TestGame < Minitest::Test
     assert_respond_to @borneo, :tribes
   end
 
-  # def test_tribes_is_array
-  #   assert_kind_of Array, @borneo.tribes
-  # end
+  def test_tribes_is_array
+    assert_kind_of Array, @borneo.tribes
+  end
   #
   # def test_add_tribe
   #   contestants = ["person_one", "person_two"]
