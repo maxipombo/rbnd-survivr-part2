@@ -32,18 +32,20 @@ def phase_one
 end
 
 def phase_two
+  phase_two_elimination = []
   puts "*** Phase two ***".blue
   3.times do |round|
-    loosers = @borneo.individual_immunity_challenge
-    puts "For round #{round + 1}: " + "#{loosers.name} ".red + "was eliminated off the island"
+    immunity_winner = @merge_tribe.individual_immunity_challenge
+    phase_two_elimination << @merge_tribe.tribal_council(immune: immunity_winner)
   end
+  return phase_two_elimination.length
 end
 
 def phase_three
   puts "*** Phase three ***".blue
   7.times do |round|
     loosers = @borneo.individual_immunity_challenge
-    puts "For round #{round + 1}: " + "#{loosers.name} ".red + "was eliminated off the island"
+    puts "#{loosers.name} ".red + "was eliminated off the island"
     @jury.add_member(loosers)
   end
 end

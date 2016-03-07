@@ -22,4 +22,7 @@ class Tribe
     return loosers
   end
 
+  def individual_immunity_challenge
+    @members.sample
+  end
 end
